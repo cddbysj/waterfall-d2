@@ -1,6 +1,6 @@
 class LazyLoad {
 	constructor(imgs) {
-		this.imgs = imgs
+		this.imgs = Array.from(imgs)
 		this.clientHeight = document.body.clientHeight || document.documentElement.clientHeight
 		this.init()
 	}
@@ -14,7 +14,7 @@ class LazyLoad {
 	isVisible(el) {
 		const bound = el.getBoundingClientRect()
 		// 加 50 像素是为了提前加载
-		return bound.top <= clientHeight + 50
+		return bound.top <= this.clientHeight + 50
 	}
 
 	// 滚动条滚动时，重新遍历图片
